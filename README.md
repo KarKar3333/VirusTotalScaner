@@ -1,10 +1,13 @@
 # VirusTotal Scanner
 
 ## Установка
+
 pip install -r requirements.txt
 
 ## Настройка
+
 Создать .env:
+
 VT_API_KEY=your_key
 
 ## Запуск
