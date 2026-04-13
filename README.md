@@ -10,9 +10,9 @@ VT_API_KEY=your_key
 ## Запуск
 # Консольный ввод (CLI):
 
-python scanner.py --file test.exe
-python scanner.py --url https://example.com
-python scanner.py --hash <sha256>
+- python scanner.py --file /path/to/file.exe
+- python scanner.py --url https://example.com 
+- python scanner.py --hash sha256_hash
 
 <img width="541" height="368" alt="Снимок экрана 2026-04-12 230315" src="https://github.com/user-attachments/assets/c6efa8df-4888-4902-ae22-d64f565174f8" />
 
@@ -24,6 +24,6 @@ python scanner.py
 <img width="529" height="410" alt="Снимок экрана 2026-04-13 213756" src="https://github.com/user-attachments/assets/e601f900-2f6a-4aa5-9048-e9cff9cdb0ec" />
 
 ## Ограничения
-- 4 запроса в минуту
-- 500 в день
-- файл до 32MB
+- Запросов в минуту 4
+- Запросов в день 500
+- Максимальный размер файла (через POST /files) 32 МБ
