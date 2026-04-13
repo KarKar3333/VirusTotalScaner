@@ -20,6 +20,7 @@ python scanner.py --hash <sha256>
 
 # Интерактивный режим:
 python scanner.py
+
 <img width="541" height="368" alt="Снимок экрана 2026-04-12 230315" src="https://github.com/user-attachments/assets/c6efa8df-4888-4902-ae22-d64f565174f8" />
 
 ## Ограничения
