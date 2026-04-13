@@ -38,15 +38,16 @@ def scan_file(file_path):
 
 
 def scan_url_func(url):
-    encoded = base64_url_encode(url)
+    print("Отправляем URL на анализ...")
 
     result = scan_url(url)
-    url_id = result["data"]["id"]
+    analysis_id = result["data"]["id"]
 
+    print("Ожидаем анализ...")
     time.sleep(20)
 
-    report = get_url_report(url_id)
-    stats = report["data"]["attributes"]["last_analysis_stats"]
+    analysis = get_analysis(analysis_id)
+    stats = analysis["data"]["attributes"]["stats"]
 
     print(parse_stats(stats))
 
@@ -72,8 +73,41 @@ def main():
         else:
             print("Не найдено")
     else:
-        print("Используй --file или --url или --hash")
+        interactive_mode()
 
+def interactive_mode():
+    while True:
+        print("\n=== VirusTotal Scanner ===")
+        print("1 — Проверить файл")
+        print("2 — Проверить URL")
+        print("3 — Проверить по хешу")
+        print("0 — Выход")
+
+        choice = input("Выберите действие: ")
+
+        if choice == "1":
+            file_path = input("Введите путь к файлу: ")
+            scan_file(file_path)
+
+        elif choice == "2":
+            url = input("Введите URL: ")
+            scan_url_func(url)
+
+        elif choice == "3":
+            file_hash = input("Введите SHA-256 хеш: ")
+            report = get_file_report(file_hash)
+            if report:
+                stats = report["data"]["attributes"]["last_analysis_stats"]
+                print(parse_stats(stats))
+            else:
+                print("Не найдено")
+
+        elif choice == "0":
+            print("Выход...")
+            break
+
+        else:
+            print("Неверный выбор!")
 
 if __name__ == "__main__":
     main()
