@@ -11,10 +11,14 @@ def scan_file(file_path):
     if not os.path.exists(file_path):
         print("Файл не найден")
         return
+        return("Файл не найден")
+        
 
     if os.path.getsize(file_path) > 32 * 1024 * 1024:
         print("Файл слишком большой (>32MB)")
         return
+        return("Файл слишком большой (>32MB)")
+        
 
     print("Вычисляем SHA-256...")
     file_hash = calculate_sha256(file_path)
@@ -110,4 +114,4 @@ def interactive_mode():
             print("Неверный выбор!")
 
 if __name__ == "__main__":
-    main()
+    main()    main()
